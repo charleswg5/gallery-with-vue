@@ -1,5 +1,5 @@
 <template lang="pug">
-figure.card(@click.stop="clickHandler", :class="{backface:isBackface}",:style="[card.style]")
+figure.card(@click.stop="$emit('cardclick',id)", :class="{backface:card.backface}", :style="[card.style]")
     img(:src="card.image.url",height="250",width="250")
     figcaption
         h2.card-title {{card.image.title}}
@@ -10,28 +10,28 @@ figure.card(@click.stop="clickHandler", :class="{backface:isBackface}",:style="[
 <script>
 export default {
     props:['id','card'],
-    data:function(){
-        return {
-            'isBackface':false
-        }
-    },
+//    data:function(){
+//        return {
+//            'isBackface':false
+//        }
+//    },
     methods:{
-        clickHandler:function(){
-            if(this.card.center){
-                this.isBackface = !this.isBackface;
-            }else{
-
-                this.$emit('center',this.id);
-            }
-        }
+//        clickHandler:function(){
+//            if(this.card.center){
+//                this.isBackface = !this.isBackface;
+//            }else{
+//
+//                this.$emit('center',this.id);
+//            }
+//        }
     },
     watch:{
-        'card.center':function (newValue,oldValue) {
-            if(newValue === false){
-                this.isBackface = false;
-            }
-
-        }
+//        'card.center':function (newValue,oldValue) {
+//            if(newValue === false){
+//                this.isBackface = false;
+//            }
+//
+//        }
     }
 }
 </script>
